@@ -27,13 +27,12 @@ CREATE TABLE IF NOT EXISTS `images` (
 CREATE TABLE IF NOT EXISTS `comments` (
     `id` int(255) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `user_id` int(255) NOT NULL,
-    `image_path` varchar(255),
+    `image_id` varchar(255),
     `content` varchar(255),
     `created_at` datetime,
     `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (`user_id`) REFERENCES users (`id`) ON DELETE CASCADE
 )engine=InnoDB DEFAULT CHARSET=utf8;
-
 
 CREATE TABLE IF NOT EXISTS `likes` (
 `id` int(255) PRIMARY KEY NOT NULL AUTO_INCREMENT,

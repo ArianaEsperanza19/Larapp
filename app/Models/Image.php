@@ -12,11 +12,11 @@ class Image extends Model
     public function comments()
     {
         # Have many comments
-        $this->hasMany('App\Models\Comment');
+        return $this->hasMany('App\Models\Comment');
     }
     public function likes()
     {
-        $this->hasMany('App\Models\Like');
+        return $this->hasMany('App\Models\Like');
     }
     public function user()
     {

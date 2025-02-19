@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Contracts\Auth\MustVerifyEmail; # Necesario para la verificacion de email
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -15,12 +15,15 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
+     Register*
      * @var list<string>
      */
     protected $fillable = [
         'name',
+        'surname',
+        'role',
         'email',
+        'image',
         'password',
     ];
 
@@ -50,6 +53,6 @@ class User extends Authenticatable
     public function comments()
     {
         # Have many comments
-        $this->hasMany('App\Models\Comment');
+        return $this->hasMany('App\Models\Comment');
     }
 }

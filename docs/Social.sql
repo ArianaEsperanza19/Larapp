@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `surname` varchar(200) NOT NULL,
     `email` varchar(255) NOT NULL,
     `password` varchar(255) NOT NULL,
-    `image` varchar(255) NOT NULL,
+    `image` varchar(255) DEFAULT NULL,
     `created_at` datetime,
     `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
     `remember_token` varchar(255)

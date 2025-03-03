@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -48,6 +50,25 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function info($id)
+    {
+        // $datos = DB::table('users')->where('id', '=', $id)->first();
+        $datos = $this::all()->where('id', '=', $id)->first();
+        return $datos;
+    }
+    public function up($info, $id)
+    {
+        $user = User::find($id);
+        $user->fill([
+            'name' => "$info->name",
+            'surname' => "$info->surname",
+            'role' => "$info->role",
+            'email' => "$info->email"
+        ]);
+        $user->save();
+
     }
 
     public function comments()

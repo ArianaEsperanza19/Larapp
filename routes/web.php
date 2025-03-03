@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/config', [App\Http\Controllers\UserController::class, 'config'])->name('user.config');
+    Route::post('/updateUser', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 });
 
 Route::get('/register', function () {

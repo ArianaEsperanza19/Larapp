@@ -40,11 +40,13 @@
                         Settings
                     </h2>
                     {{-- Formulario de configuracion --}}
-                    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
+                    <form id="send-verification" method="post" action="{{ route('verification.send') }}"
+                        enctype="multipart/form-data">
                         @csrf
                     </form>
 
-                    <form method="post" action="{{ route('user.update') }}" class="mt-6 space-y-6">
+                    <form method="post" action="{{ route('user.update') }}" class="mt-6 space-y-6"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('post')
 
@@ -92,6 +94,13 @@
                                 </div>
                             @endif
                         </div>
+                        <div>
+                            <x-input-label for="image" :value="__('Image')" />
+                            <x-text-input id="image" name="image" type="file" class="mt-1 block w-full"
+                                :value="old('image', $user->image)" required autofocus autocomplete="image" />
+                            <x-input-error class="mt-2" :messages="$errors->get('image')" />
+                        </div>
+
 
                         <div class="flex items-center gap-4">
                             <x-primary-button>{{ __('Save') }}</x-primary-button>

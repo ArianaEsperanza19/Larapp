@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    //
-    public function config(Request $request)
+    public function config()
     {
         // conseguir id del usuario identificado
         $sesion = Auth::user();
@@ -21,8 +20,16 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $sesion = Auth::user();
+        # Validaciones
+        $validate = $request->validate([
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'role' => 'required|string|max:255',
+            'email' => 'required|string|email|unique:users,email,' . $sesion->id . '|max:255',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
         $user = new User();
         $user->up($request, $sesion->id);
-        return view('dashboard');
+        return redirect()->route('dashboard')->with('message', "Información actualizada correctamente");
     }
 }

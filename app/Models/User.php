@@ -6,7 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Container\Attributes\Storage;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
 
 // use Illuminate\Support\Facades\DB;
@@ -74,10 +75,18 @@ class User extends Authenticatable
             $extension = $info->file('image')->getClientOriginalExtension();
             $img_path_name = $Justimg_name. "_". time() . '.' . $extension; // Nombre único + extensión original
 
-            var_dump($img_path_name);
             // Almacenar en storage/app/public/users
-            $info->file('image')->storeAs('users', $img_path_name, 'public'); // Corregido aquí
+            // $info->file('image')->storeAs('users', $img_path_name, 'public'); // Corregido aquí
+            // Sofia@sofia.com 12345678
+            // $file = 'users/' . $user->image;
+            // if (Storage::disk('public')->exists($file)) {
+            //     echo 'La imagen existe.';
+            // } else {
+            //     echo 'La imagen no existe.';
+            //     Storage::disk('public')->put("users/$img_path_name", File::get($info->file('image')));
+            // }
 
+            Storage::disk('public')->put("users/$img_path_name", File::get($info->file('image')));
 
             // Actualizar la ruta en la base de datos
             $user->image = "$img_path_name";
@@ -92,6 +101,27 @@ class User extends Authenticatable
         ]);
 
         $user->save();
+    }
+    public function comprobarImg($name, $disk)
+    {
+        $file = "$disk/" . $name;
+        if (Storage::disk('public')->exists($file)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function avatar($name)
+    {
+        // Atencion, es necesario requerir Storage y Response
+        $file = Storage::disk('public')->get("users/".$name);
+        return new Response($file, 200);
+
+    }
+    public function getDefaultAvatar()
+    {
+        $file = Storage::disk('public')->get("images/avatar.webp");
+        return new Response($file, 200);
     }
     public function comments()
     {

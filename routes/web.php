@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/config', [App\Http\Controllers\UserController::class, 'config'])->name('user.config');
     Route::post('/updateUser', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+    Route::get('/UserAvatar/{fileName}', [App\Http\Controllers\UserController::class, 'getImage'])->name('user.getImage');
+    Route::get("/defaultAvatar", [App\Http\Controllers\UserController::class, 'getDefaultAvatar'])->name('user.getDefaultAvatar');
 });
 
 Route::get('/register', function () {

@@ -32,4 +32,17 @@ class UserController extends Controller
         $user->up($request, $sesion->id);
         return redirect()->route('dashboard')->with('message', "Información actualizada correctamente");
     }
+    public function getImage($fileName)
+    {
+        $user = new User();
+        $file = $user->avatar($fileName);
+        return $file;
+
+    }
+    public function getDefaultAvatar()
+    {
+        $user = new User();
+        $file = $user->getDefaultAvatar();
+        return $file;
+    }
 }

@@ -15,6 +15,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="././resources/css/styles.css">
 </head>
 
 
@@ -96,6 +97,7 @@
                         </div>
                         <div>
                             <x-input-label for="image" :value="__('Image')" />
+                            @include('includes.avatar')
                             <x-text-input id="image" name="image" type="file" class="mt-1 block w-full"
                                 :value="old('image', $user->image)" required autofocus autocomplete="image" />
                             <x-input-error class="mt-2" :messages="$errors->get('image')" />

@@ -48,7 +48,7 @@
                         <x-dropdown-link :href="route('user.config')">
                             {{ __('Settings') }}
                         </x-dropdown-link>
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('img.form')">
                             {{ __('Image') }}
                         </x-dropdown-link>
 

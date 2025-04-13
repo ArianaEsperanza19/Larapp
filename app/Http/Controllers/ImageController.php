@@ -32,5 +32,21 @@ class ImageController extends Controller
         // return $image_path;
     }
 
+    public function show_all()
+    {
+        $images = new Image();
+        $data = $images->getAll();
+        return view('dashboard', $data);
+    }
+
+    public function show_id()
+    {
+        $user = Auth::user();
+        $images = new Image();
+        $data = $images->getImgs($user->id);
+        return view('dashboard', ['images' => $data]);
+        // return view('dashboard', $data);
+    }
+
 
 }

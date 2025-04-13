@@ -29,6 +29,20 @@ class Image extends Model
         return $this->belongsTo('App\Models\User', 'user_id');
     }
 
+    public function getAll()
+    {
+        $images = Image::all();
+        return $images;
+
+    }
+
+    public function getImgs($id)
+    {
+        $images = Image::where('user_id', '=', $id)->get();
+        // $images = Image::where('user_id', $id)->get();
+        return $images;
+    }
+
     public function up(Request $request, $id)
     {
         $datos = $request->all();

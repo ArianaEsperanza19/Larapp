@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Image;
 
 class UserController extends Controller
 {
+    public function dashboard()
+    {
+        $this->show_img_id();
+    }
     public function config()
     {
         // conseguir id del usuario identificado
@@ -44,5 +49,14 @@ class UserController extends Controller
         $user = new User();
         $file = $user->getDefaultAvatar();
         return $file;
+    }
+
+
+    public function show_img_id()
+    {
+        $user = Auth::user();
+        $images = new Image();
+        $data = $images->getImgs($user->id);
+        return view('dashboard', ['images' => $data]);
     }
 }

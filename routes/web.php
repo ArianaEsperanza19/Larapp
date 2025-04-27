@@ -26,6 +26,7 @@ Route::get('/', function () {
 
 
 Route::middleware('auth')->group(function () {
+    // NOTE: Add the user's images if they have any
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');

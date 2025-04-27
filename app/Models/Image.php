@@ -38,7 +38,7 @@ class Image extends Model
 
     public function getImgs($id)
     {
-        $images = Image::where('user_id', '=', $id)->get();
+        $images = Image::where('user_id', '=', $id)->paginate(2);
         // $images = Image::where('user_id', $id)->get();
         return $images;
     }

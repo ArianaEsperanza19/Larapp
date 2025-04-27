@@ -10,3 +10,38 @@
     text-align: left;
     align-items: center;
 }
+
+.pag {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos generales para el botón */
+.btn {
+    background-color: white;
+    color: gray; /* Texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px 15px; /* Espaciado interno */
+    font-size: 12px; /* Tamaño del texto */
+    font-family: Arial, sans-serif; /* Fuente */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: all 0.3s ease; /* Transición suave para los efectos */
+    margin: 20px;
+    margin-top: 0px;
+}
+
+/* Efecto al pasar el mouse sobre el botón */
+.btn:hover {
+    background-color: azure;
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+/* Efecto al hacer clic en el botón */
+.btn:active {
+    background-color: #3e8e41; /* Color aún más oscuro al hacer clic */
+    transform: scale(0.98); /* Reduce ligeramente el tamaño */
+}

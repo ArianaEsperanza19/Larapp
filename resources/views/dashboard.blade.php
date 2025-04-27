@@ -1,10 +1,10 @@
-        @vite('resources/css/styles.css')
         <x-app-layout>
             <x-slot name="header">
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                     {{ __('Dashboard') }}
                 </h2>
             </x-slot>
+            @vite('resources/css/styles.css')
             @include('includes.avatar')
 
             <div class="py-12">
@@ -15,8 +15,7 @@
                         </div>
                     </div>
                 </div>
-
-                @if (count($images) > 0)
+                @if (isset($images) && count($images) > 0)
                     @foreach ($images as $image)
                         <div class="py-12">
                             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -31,9 +30,19 @@
                                         <p><b>Created at:</b> {{ $image->created_at->diffForHumans() }}</p>
                                         <p><b>Updated at:</b> {{ $image->updated_at->diffForHumans() }}</p>
                                     </div>
+                                    <!-- link de comentarios -->
+                                    <button class='btn' href=''>Comentarios</button>
+                                    <!-- Likes -->
+                                    <button class='btn' style='margin-left: 0px'>Like <span
+                                            class='likes'>1</span></button>
                                 </div>
                             </div>
                     @endforeach
+                    <!-- Paginacion -->
+                    <div class="clearfix"></div>
+                    <div class='pag'>
+                        {{ $images->links() }}
+                    </div>
                 @endif
 
                 @if (session('message'))

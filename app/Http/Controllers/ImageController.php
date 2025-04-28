@@ -48,5 +48,12 @@ class ImageController extends Controller
         // return view('dashboard', $data);
     }
 
+    public function show_details($id_img)
+    {
+        $image = Image::find($id_img);
+        return view('image.details', array('image' => $image));
+
+    }
+
 
 }

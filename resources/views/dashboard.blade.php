@@ -24,17 +24,26 @@
                                         <p><b>Description:</b> {{ $image->description }}</p>
                                         <p><b>Name:</b> {{ $image->image_path }}</p>
                                         @if (asset('storage/image/' . $image->image_path) != null)
-                                            <img class='formImg'
-                                                src="{{ asset('storage/image/' . $image->image_path) }}">
+                                            <a href="{{ route('img.details', ['id_img' => $image->id]) }}">
+                                                <img class='formImg'
+                                                    src="{{ asset('storage/image/' . $image->image_path) }}"></a>
                                         @endif
                                         <p><b>Created at:</b> {{ $image->created_at->diffForHumans() }}</p>
                                         <p><b>Updated at:</b> {{ $image->updated_at->diffForHumans() }}</p>
                                     </div>
                                     <!-- link de comentarios -->
-                                    <button class='btn' href=''>Comentarios</button>
+                                    <button class='btn' href=''>
+                                        @if (count($image->comments) == 0 || count($image->comments) > 1)
+                                            Comentarios {{ count($image->comments) }}
+                                        @endif
+                                        @if (count($image->comments) == 1)
+                                            Comentario {{ count($image->comments) }}
+                                        @endif
+                                    </button>
+
                                     <!-- Likes -->
                                     <button class='btn' style='margin-left: 0px'>Like <span
-                                            class='likes'>1</span></button>
+                                            class='likes'>{{ count($image->likes) }}</span></button>
                                 </div>
                             </div>
                     @endforeach

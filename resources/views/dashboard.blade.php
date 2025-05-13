@@ -8,13 +8,6 @@
             @include('includes.avatar')
 
             <div class="py-12">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6 text-gray-900 dark:text-gray-100">
-                            {{ __("You're logged in!") }}
-                        </div>
-                    </div>
-                </div>
                 @if (isset($images) && count($images) > 0)
                     @foreach ($images as $image)
                         <div class="py-12">
@@ -32,14 +25,14 @@
                                         <p><b>Updated at:</b> {{ $image->updated_at->diffForHumans() }}</p>
                                     </div>
                                     <!-- link de comentarios -->
-                                    <button class='btn' href=''>
+                                    <span class='' href=''>
                                         @if (count($image->comments) == 0 || count($image->comments) > 1)
                                             Comentarios {{ count($image->comments) }}
                                         @endif
                                         @if (count($image->comments) == 1)
                                             Comentario {{ count($image->comments) }}
                                         @endif
-                                    </button>
+                                    </span>
 
                                     <!-- Likes -->
                                     <button class='btn' style='margin-left: 0px'>Like <span

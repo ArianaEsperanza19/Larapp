@@ -1,14 +1,25 @@
 .avatar {
     height: 100px;
     border-radius: 5%;
-    margin-left: 4%;
+    margin-left: 5%;
     margin-top: 30px;
 }
 
 .formImg {
-    width: 20%;
+    /* width: 20%; */
+    margin: 0 auto;
+    max-length: 100px;
+    max-width: 80%;
+    align-items: center;
+}
+
+.detailImg {
+    width: max%;
+    margin: 0 auto;
     text-align: left;
     align-items: center;
+    max-length: 100%;
+    max-width: 100%;
 }
 
 .pag {
@@ -44,4 +55,84 @@
 .btn:active {
     background-color: #3e8e41; /* Color aún más oscuro al hacer clic */
     transform: scale(0.98); /* Reduce ligeramente el tamaño */
+}
+
+/* Comentarios */
+
+.comment {
+    background-color: #f9f9f9; /* Fondo claro para el comentario [[1]] */
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 8px; /* Bordes redondeados para un aspecto moderno */
+    padding: 15px; /* Espaciado interno */
+    margin-bottom: 15px; /* Espacio entre comentarios */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra ligera para destacar */
+}
+
+.comment p {
+    margin: 0 0 10px; /* Espaciado entre los párrafos */
+    font-size: 14px; /* Tamaño de fuente adecuado */
+    line-height: 1.5; /* Espaciado entre líneas para mejorar la legibilidad */
+    color: #333; /* Color de texto oscuro */
+}
+
+.comment b {
+    color: #007bff; /* Color azul para los títulos (User, Created at, Updated at) */
+    font-weight: bold; /* Negrita para destacar los títulos */
+}
+
+.comment p:last-child {
+    margin-bottom: 0; /* Eliminar margen inferior del último párrafo */
+}
+
+/* Caja de comentarios */
+
+.comment-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-form h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.comment-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.comment-form input[type="text"],
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.comment-form textarea {
+    resize: none;
+    height: 80px;
+}
+
+.comment-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.comment-form button:hover {
+    background-color: #0056b3;
 }

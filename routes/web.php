@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get("/defaultAvatar", [App\Http\Controllers\UserController::class, 'getDefaultAvatar'])->name('user.getDefaultAvatar');
     Route::get("/ImgForm", [App\Http\Controllers\ImageController::class, 'imgForm'])->name('img.form');
     Route::post("/UpImage", [App\Http\Controllers\ImageController::class, 'upload'])->name('img.upload');
-    Route::get("/ShowImgUser", [App\Http\Controllers\ImageController::class, 'show_id'])->name('img.show_id');
+    Route::get("/UserPosts", [App\Http\Controllers\ImageController::class, 'show_id'])->name('img.show_id');
     Route::get("/ShowImgAll", [App\Http\Controllers\ImageController::class, 'show_all'])->name('img.show_all');
     Route::get("/ImgDetails/{id_img}", [App\Http\Controllers\ImageController::class, 'show_details'])->name('img.details');
 });

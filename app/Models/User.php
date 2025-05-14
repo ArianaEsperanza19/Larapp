@@ -120,7 +120,7 @@ class User extends Authenticatable
     }
     public function getDefaultAvatar()
     {
-        $file = Storage::disk('public')->get("images/avatar.webp");
+        $file = Storage::disk('public')->get("default/avatar.webp");
         return new Response($file, 200);
     }
     public function comments()

@@ -26,7 +26,6 @@ Route::get('/', function () {
 
 
 Route::middleware('auth')->group(function () {
-    // NOTE: Add the user's images if they have any
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -42,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::get("/UserPosts", [App\Http\Controllers\ImageController::class, 'show_id'])->name('img.show_id');
     Route::get("/ShowImgAll", [App\Http\Controllers\ImageController::class, 'show_all'])->name('img.show_all');
     Route::get("/ImgDetails/{id_img}", [App\Http\Controllers\ImageController::class, 'show_details'])->name('img.details');
+    Route::post("/registerComment", [App\Http\Controllers\CommentController::class, 'register'])->name('comment.register');
 });
 
 Route::get('/register', function () {

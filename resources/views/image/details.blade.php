@@ -42,4 +42,35 @@
             </div>
         </div>
     @endif
+    <!-- Comentarios de la imagen -->
+    <div class="container mt-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5>Comentarios</h5>
+            </div>
+            <div class="card-body">
+                @if (isset($comments) && count($comments) > 0)
+                    @foreach ($comments as $comment)
+                        <div class="alert alert-light border">
+                            <p class="mb-0"><strong>Nombre:</strong> {{ $comment->user->name }}</p>
+                            <p class="mb-0"><strong>Comentario:</strong> {{ $comment->content }}</p>
+                            <p class="mb-0"><strong>Created at:</strong> {{ $comment->created_at->diffForHumans() }}
+                            </p>
+                        </div>
+                        <div class="text-left">
+                            <x-btn-blue>Editar</x-btn-blue>
+                            <x-btn-delete>Eliminar</x-btn-delete>
+                        </div>
+                    @endforeach
+                @else
+                    <p class="text-muted">No hay comentarios aún.</p>
+                @endif
+            </div>
+        </div>
+    </div>
+
+    <!-- Caja de comentarios -->
+    <x-commentBox>
+        {{ $image->id }}
+    </x-commentBox>
 </x-app-layout>

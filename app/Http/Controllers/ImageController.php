@@ -51,8 +51,8 @@ class ImageController extends Controller
     public function show_details($id_img)
     {
         $image = Image::find($id_img);
-        return view('image.details', array('image' => $image));
-
+        $comments = Image::find($id_img)->comments()->get();
+        return view('image.details', array('image' => $image, 'comments' => $comments));
     }
 
 

@@ -19,15 +19,10 @@
 
                 <div class="form-group">
                     <textarea class="form-control" id="comment" name="comment" rows="4" placeholder="Escribe tu comentario aquí"></textarea>
+                    <x-input-error class="alert alert-danger mt-2" :messages="$errors->get('comment')" />
                 </div>
 
                 <button type="submit" class="btn btn-primary mt-2">Enviar</button>
-                <!-- Mensaje de error -->
-                @if (session('error'))
-                    <div class="alert alert-danger mt-2">
-                        {{ session('error') }}
-                    </div>
-                @endif
             </form>
         </div>
     </div>

@@ -40,9 +40,8 @@
                                     Comentario {{ count($image->comments) }}
                                 @endif
                             </span>
-
-                            <button class="btn btn-outline-primary">Like <span
-                                    class="badge bg-primary">{{ count($image->likes) }}</span></button>
+                            <x-btn-blue>Likes <span
+                                    class="badge bg-primary">{{ count($image->likes) }}</span></x-btn-blue>
                         </div>
                     </div>
                 </div>

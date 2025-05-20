@@ -29,8 +29,10 @@ class Comment extends Model
             'image_id' => $info['image'],
             'content' => $info['comment']
         ]);
-        $comment->save();
-        die();
-
+        if ($comment->save()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

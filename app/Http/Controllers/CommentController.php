@@ -18,6 +18,9 @@ class CommentController extends Controller
 
         $comment = new Comment();
         $comment->up($request);
+        if ($comment) {
+            return redirect()->back();
+        }
 
     }
 }

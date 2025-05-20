@@ -51,13 +51,25 @@
             <div class="card-body">
                 @if (isset($comments) && count($comments) > 0)
                     @foreach ($comments as $comment)
-                        <div class="alert alert-light border">
-                            <p class="mb-0"><strong>Nombre:</strong> {{ $comment->user->name }}</p>
-                            <p class="mb-0"><strong>Comentario:</strong> {{ $comment->content }}</p>
-                            <p class="mb-0"><strong>Created at:</strong> {{ $comment->created_at->diffForHumans() }}
-                            </p>
+                        <div class="d-flex align-items-start mb-0">
+                            <!-- Imagen de perfil -->
+                            @if (Auth::user()->image == '/images/default.jpg')
+                                <img class="rounded-circle img-thumbnail me-3 mt-2" width="60" alt="Avatar"
+                                    src="{{ route('user.getDefaultAvatar') }}">
+                            @else
+                                <img class="rounded-circle img-thumbnail me-3 mt-2" width="60" alt="Avatar"
+                                    src="{{ route('user.getImage', Auth::user()->image) }}">
+                            @endif
+
+                            <!-- Contenido del comentario -->
+                            <div class="alert alert-light border flex-grow-1">
+                                <p class="mb-0"><strong>Nombre:</strong> {{ $comment->user->name }}</p>
+                                <p class="mb-0"><strong>Comentario:</strong> {{ $comment->content }}</p>
+                                <p class="mb-0"><strong>Created at:</strong>
+                                    {{ $comment->created_at->diffForHumans() }}</p>
+                            </div>
                         </div>
-                        <div class="text-left">
+                        <div class="text-end mb-3">
                             <x-btn-blue>Editar</x-btn-blue>
                             <x-btn-delete>Eliminar</x-btn-delete>
                         </div>
@@ -66,6 +78,7 @@
                     <p class="text-muted">No hay comentarios aún.</p>
                 @endif
             </div>
+
         </div>
     </div>
 
@@ -73,4 +86,5 @@
     <x-commentBox>
         {{ $image->id }}
     </x-commentBox>
+    <!-- Errores -->
 </x-app-layout>

@@ -31,7 +31,7 @@ class Image extends Model
 
     public function getAll()
     {
-        $images = Image::all();
+        $images = Image::Paginate(2);
         return $images;
 
     }

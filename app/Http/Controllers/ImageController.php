@@ -36,7 +36,7 @@ class ImageController extends Controller
     {
         $images = new Image();
         $data = $images->getAll();
-        return view('dashboard', $data);
+        return view('image.posts', ['images' => $data]);
     }
 
     public function show_id()

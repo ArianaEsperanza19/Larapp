@@ -96,7 +96,7 @@ class User extends Authenticatable
         $user->fill([
             'name' => $info->name,
             'surname' => $info->surname,
-            'role' => $info->role,
+            'role' => $info->role ?? "user",
             'email' => $info->email,
         ]);
 

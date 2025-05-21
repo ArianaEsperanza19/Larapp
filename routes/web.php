@@ -33,16 +33,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/config', [App\Http\Controllers\UserController::class, 'config'])->name('user.config');
-    Route::post('/updateUser', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
-    Route::get('/UserAvatar/{fileName}', [App\Http\Controllers\UserController::class, 'getImage'])->name('user.getImage');
-    Route::get("/defaultAvatar", [App\Http\Controllers\UserController::class, 'getDefaultAvatar'])->name('user.getDefaultAvatar');
-    Route::get("/ImgForm", [App\Http\Controllers\ImageController::class, 'imgForm'])->name('img.form');
-    Route::post("/UpImage", [App\Http\Controllers\ImageController::class, 'upload'])->name('img.upload');
-    Route::get("/UserPosts", [App\Http\Controllers\ImageController::class, 'show_id'])->name('img.show_id');
-    Route::get("/ShowImgAll", [App\Http\Controllers\ImageController::class, 'show_all'])->name('img.show_all');
-    Route::get("/ImgDetails/{id_img}", [App\Http\Controllers\ImageController::class, 'show_details'])->name('img.details');
-    Route::post("/registerComment", [App\Http\Controllers\CommentController::class, 'register'])->name('comment.register');
-    Route::get("/deleteComment/{id}", [App\Http\Controllers\CommentController::class, 'delete'])->name('comment.delete');
+    Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+    Route::get('/userAvatar/{fileName}', [App\Http\Controllers\UserController::class, 'getImage'])->name('user.getImage');
+    Route::get("/avatar/default", [App\Http\Controllers\UserController::class, 'getDefaultAvatar'])->name('user.getDefaultAvatar');
+    Route::get("/img/Form", [App\Http\Controllers\ImageController::class, 'imgForm'])->name('img.form');
+    Route::post("/img/up", [App\Http\Controllers\ImageController::class, 'upload'])->name('img.upload');
+    Route::get("/user/posts", [App\Http\Controllers\ImageController::class, 'show_id'])->name('img.show_id');
+    Route::get("/img/show/all", [App\Http\Controllers\ImageController::class, 'show_all'])->name('img.show_all');
+    Route::get("/img/details/{id_img}", [App\Http\Controllers\ImageController::class, 'show_details'])->name('img.details');
+    Route::post("/comment/register", [App\Http\Controllers\CommentController::class, 'register'])->name('comment.register');
+    Route::get("/comment/delete/{id}", [App\Http\Controllers\CommentController::class, 'delete'])->name('comment.delete');
 });
 
 Route::get('/register', function () {

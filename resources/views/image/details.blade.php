@@ -70,8 +70,10 @@
                         </div>
                         <div class="text-end mb-3">
                             <x-btn-blue>Editar</x-btn-blue>
-                            <x-btn-delete><a href="{{ route('comment.delete', $comment->id) }}"
-                                    style="text-decoration: none">Eliminar</a></x-btn-delete>
+                            @if (Auth::user()->id == $comment->user_id)
+                                <x-btn-delete><a href="{{ route('comment.delete', $comment->id) }}"
+                                        style="text-decoration: none">Eliminar</a></x-btn-delete>
+                            @endif
                         </div>
                     @endforeach
                 @else

@@ -31,14 +31,17 @@ class Image extends Model
 
     public function getAll()
     {
-        $images = Image::orderBy('created_at', 'desc')->Paginate(2);
+        $images = Image::Paginate(2);
         return $images;
 
     }
 
     public function getImgs($id)
     {
-        $images = Image::where('user_id', '=', $id)->paginate(2);
+        $images = Image::where('user_id', '=', $id)
+               ->orderBy('created_at', 'desc')
+               ->paginate(2);
+
         // $images = Image::where('user_id', $id)->get();
         return $images;
     }

@@ -53,12 +53,22 @@
                     @foreach ($comments as $comment)
                         <div class="d-flex align-items-start mb-0">
                             <!-- Imagen de perfil -->
-                            @if (Auth::user()->image == '/images/default.jpg')
-                                <img class="rounded-circle img-thumbnail me-3 mt-2" width="60" alt="Avatar"
-                                    src="{{ route('user.getDefaultAvatar') }}">
+                            @if (Auth::user()->id == $comment->user_id)
+                                @if (Auth::user()->image == '/images/default.jpg' || Auth::user()->image == null)
+                                    <img class="rounded-circle img-thumbnail me-3 mt-1" width="60" alt="Avatar"
+                                        src="{{ route('user.getDefaultAvatar') }}">
+                                @else
+                                    <img class="rounded-circle img-thumbnail me-3 mt-1" width="60" alt="Avatar"
+                                        src="{{ route('user.getImage', Auth::user()->image) }}">
+                                @endif
                             @else
-                                <img class="rounded-circle img-thumbnail me-3 mt-2" width="60" alt="Avatar"
-                                    src="{{ route('user.getImage', Auth::user()->image) }}">
+                                @if ($comment->user->image == '/images/default.jpg' || $comment->user->image == null)
+                                    <img src="{{ route('user.getDefaultAvatar') }}"
+                                        class="rounded-circle img-thumbnail me-3 mt-1" width="60">
+                                @else
+                                    <img src="{{ route('user.getImage', ['fileName' => $comment->user->image]) }}"
+                                        class="rounded-circle img-thumbnail me-3 mt-1" width="60">
+                                @endif
                             @endif
 
                             <!-- Contenido del comentario -->

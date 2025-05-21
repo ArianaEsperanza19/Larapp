@@ -18,7 +18,7 @@ class Image extends Model
     public function comments()
     {
         # Have many comments
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany('App\Models\Comment')->orderBy('created_at', 'desc');
     }
     public function likes()
     {

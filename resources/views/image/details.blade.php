@@ -63,15 +63,15 @@
 
                             <!-- Contenido del comentario -->
                             <div class="alert alert-light border flex-grow-1">
-                                <p class="mb-0"><strong>Nombre:</strong> {{ $comment->user->name }}</p>
+                                <p class="mb-0"><strong>@ {{ $comment->user->name }} | Created
+                                        at: </strong>{{ $comment->created_at->diffForHumans() }}</p>
                                 <p class="mb-0"><strong>Comentario:</strong> {{ $comment->content }}</p>
-                                <p class="mb-0"><strong>Created at:</strong>
-                                    {{ $comment->created_at->diffForHumans() }}</p>
                             </div>
                         </div>
                         <div class="text-end mb-3">
                             <x-btn-blue>Editar</x-btn-blue>
-                            <x-btn-delete>Eliminar</x-btn-delete>
+                            <x-btn-delete><a href="{{ route('comment.delete', $comment->id) }}"
+                                    style="text-decoration: none">Eliminar</a></x-btn-delete>
                         </div>
                     @endforeach
                 @else

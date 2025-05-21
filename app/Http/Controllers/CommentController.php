@@ -18,9 +18,14 @@ class CommentController extends Controller
 
         $comment = new Comment();
         $comment->up($request);
-        if ($comment) {
-            return redirect()->back();
-        }
+        return redirect()->back();
 
+    }
+
+    public function delete($id)
+    {
+        $comment = new Comment();
+        $comment->down($id);
+        return redirect()->back();
     }
 }

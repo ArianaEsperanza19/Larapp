@@ -20,9 +20,6 @@ class Comment extends Model
     }
     public function up($info)
     {
-        /* echo $info['user']; */
-        /* echo $info['image']; */
-        /* echo $info['comment']; */
         $comment = new Comment();
         $comment->fill([
             'user_id' => $info['user'],
@@ -30,6 +27,17 @@ class Comment extends Model
             'content' => $info['comment']
         ]);
         if ($comment->save()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function down($id)
+    {
+        //WARNING: REVISAR SI EL USUARIO ENVIADO POR PARAMETRO ES EL QUE HA CREADO EL COMENTARIO
+        $comment = Comment::find($id);
+        if ($comment->delete()) {
             return true;
         } else {
             return false;

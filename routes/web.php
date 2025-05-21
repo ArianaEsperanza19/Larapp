@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get("/ShowImgAll", [App\Http\Controllers\ImageController::class, 'show_all'])->name('img.show_all');
     Route::get("/ImgDetails/{id_img}", [App\Http\Controllers\ImageController::class, 'show_details'])->name('img.details');
     Route::post("/registerComment", [App\Http\Controllers\CommentController::class, 'register'])->name('comment.register');
+    Route::get("/deleteComment/{id}", [App\Http\Controllers\CommentController::class, 'delete'])->name('comment.delete');
 });
 
 Route::get('/register', function () {

@@ -37,6 +37,7 @@ class Comment extends Model
     {
         //WARNING: REVISAR SI EL USUARIO ENVIADO POR PARAMETRO ES EL QUE HA CREADO EL COMENTARIO
         $comment = Comment::find($id);
+
         if ($comment->delete()) {
             return true;
         } else {

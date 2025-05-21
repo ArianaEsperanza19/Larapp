@@ -44,8 +44,8 @@ class ImageController extends Controller
         $user = Auth::user();
         $images = new Image();
         $data = $images->getImgs($user->id);
-        return view('dashboard', ['images' => $data]);
-        // return view('dashboard', $data);
+        // return view('dashboard', ['images' => $data]);
+        return view('image/misPosts', ['images' => $data]);
     }
 
     public function show_details($id_img)

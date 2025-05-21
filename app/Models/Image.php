@@ -31,7 +31,7 @@ class Image extends Model
 
     public function getAll()
     {
-        $images = Image::Paginate(2);
+        $images = Image::orderBy('created_at', 'desc')->Paginate(2);
         return $images;
 
     }

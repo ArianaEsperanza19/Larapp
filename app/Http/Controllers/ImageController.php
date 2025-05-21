@@ -10,7 +10,7 @@ class ImageController extends Controller
 {
     public function imgForm()
     {
-        return view('image.image');
+        return view('image.form');
     }
 
     public function upload(Request $request)

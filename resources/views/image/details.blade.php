@@ -34,9 +34,16 @@
                         <p class="mb-0"><b>Creado hace:</b> {{ $image->created_at->diffForHumans() }}</p>
                         <p class="mb-0"><b>Actualizado hace:</b> {{ $image->updated_at->diffForHumans() }}</p>
                     </div>
-                    <a href="{{ route('like', ['id' => $image->id]) }}" class="btn btn-outline-primary">Likes
-                        <span class="badge bg-primary">{{ count($image->likes) }}</span>
-                    </a>
+                    <!-- Botones de likes -->
+                    @if ($image->likes->contains('user_id', auth()->id()))
+                        <a href="{{ route('like', ['id' => $image->id]) }}" class="btn btn-primary">
+                            Likes <span class="badge bg-light text-primary">{{ count($image->likes) }}</span>
+                        </a>
+                    @else
+                        <a href="{{ route('like', ['id' => $image->id]) }}" class="btn btn-outline-primary">Likes
+                            <span class="badge bg-primary">{{ count($image->likes) }}</span>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>

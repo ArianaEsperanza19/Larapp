@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get("/img/details/{id_img}", [App\Http\Controllers\ImageController::class, 'show_details'])->name('img.details');
     Route::post("/comment/register", [App\Http\Controllers\CommentController::class, 'register'])->name('comment.register');
     Route::get("/comment/delete/{id}", [App\Http\Controllers\CommentController::class, 'delete'])->name('comment.delete');
+    Route::get("/like/{id}", [App\Http\Controllers\LikesController::class, 'like'])->name('like');
 });
 
 Route::get('/register', function () {

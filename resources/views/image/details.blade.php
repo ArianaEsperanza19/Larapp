@@ -34,10 +34,9 @@
                         <p class="mb-0"><b>Creado hace:</b> {{ $image->created_at->diffForHumans() }}</p>
                         <p class="mb-0"><b>Actualizado hace:</b> {{ $image->updated_at->diffForHumans() }}</p>
                     </div>
-
-                    <button class="btn btn-outline-primary">Like
+                    <a href="{{ route('like', ['id' => $image->id]) }}" class="btn btn-outline-primary">Likes
                         <span class="badge bg-primary">{{ count($image->likes) }}</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

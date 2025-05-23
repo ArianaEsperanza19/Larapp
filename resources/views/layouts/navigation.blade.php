@@ -45,6 +45,9 @@
                         <!--     {{ __('Profile') }} -->
                         <!-- </x-dropdown-link> -->
                         {{-- Ruta a opciones --}}
+                        <x-dropdown-link :href="route('img.show_id')">
+                            {{ __('Mis Posts') }}
+                        </x-dropdown-link>
                         <x-dropdown-link :href="route('user.config')">
                             {{ __('Settings') }}
                         </x-dropdown-link>

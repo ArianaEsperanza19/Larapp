@@ -49,8 +49,9 @@
                                     </a>
                                 @endif
 
-                                <p class="text-muted mt-2"><b>Creado hace:</b> {{ $image->created_at->diffForHumans() }}
-                                </p>
+                                <div class="text-muted mt-2"><b>Creado hace:</b>
+                                    {{ $image->created_at->diffForHumans() }}
+                                </div>
                                 <p class="text-muted"><b>Actualizado hace:</b> {{ $image->updated_at->diffForHumans() }}
                                 </p>
                             </div>

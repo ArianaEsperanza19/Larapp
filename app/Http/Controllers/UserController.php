@@ -11,11 +11,18 @@ class UserController extends Controller
 {
     public function dashboard()
     {
-        $this->show_img_id();
+        return view('dashboard');
+    }
+
+    public function info($id)
+    {
+        $user = new User();
+        $info = $user->info($id);
+        return view('user.info', array('user' => $info));
+
     }
     public function config()
     {
-        // conseguir id del usuario identificado
         $sesion = Auth::user();
         $user = new User();
         $info = $user->info($sesion->id);

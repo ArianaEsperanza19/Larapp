@@ -48,9 +48,13 @@
                                         </div>
                                     </a>
                                 @endif
+                                <div class="text-muted mt-2"><strong>Publicado por: <a
+                                            href="{{ route('profile.info', ['id' => $image->user_id]) }}"
+                                            style="text-decoration: none"></strong> @php echo "@".$image->user->name; @endphp</a>
+                                </div>
 
-                                <p class="text-muted mt-2"><b>Creado hace:</b> {{ $image->created_at->diffForHumans() }}
-                                </p>
+                                <div class="text-muted"><b>Creado hace:</b> {{ $image->created_at->diffForHumans() }}
+                                </div>
                                 <p class="text-muted"><b>Actualizado hace:</b> {{ $image->updated_at->diffForHumans() }}
                                 </p>
                             </div>

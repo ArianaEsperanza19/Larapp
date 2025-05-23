@@ -44,7 +44,10 @@
             </header>
             {{-- Formulario de configuracion --}}
             <br>
-            <x-guest-layout>
+            <x-box-layout>
+                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                    {{ __('Profile Information') }}
+                </h2>
                 <form id="send-verification" method="post" action="{{ route('verification.send') }}"
                     enctype="multipart/form-data">
                     @csrf
@@ -116,11 +119,20 @@
                                 class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
                         @endif
                 </form>
-            </x-guest-layout>
+            </x-box-layout>
+            <x-box-layout>
+                <div class="max-w-xl">
+                    @include('profile.partials.update-password-form')
+                </div>
+            </x-box-layout>
+            <x-box-layout>
+                <div class="max-w-xl">
+                    @include('profile.partials.delete-user-form')
+                </div>
+            </x-box-layout>
     </div>
 
     </main>
-    </div>
 </body>
 
 </html>

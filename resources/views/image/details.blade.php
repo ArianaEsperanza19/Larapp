@@ -7,6 +7,7 @@
     </x-slot>
 
     @vite('resources/css/styles.css')
+    @vite('resources/css/avatares.css')
 
     @if (isset($image))
         <div class="container py-4">
@@ -61,11 +62,13 @@
                             <!-- Imagen de perfil -->
                             @if (Auth::user()->id == $comment->user_id)
                                 @if (Auth::user()->image == '/images/default.jpg' || Auth::user()->image == null)
-                                    <img class="rounded-circle img-thumbnail me-3 mt-1" width="60" alt="Avatar"
+                                    <img class="avatar-rounded" width="60" alt="Avatar"
                                         src="{{ route('user.getDefaultAvatar') }}">
                                 @else
-                                    <img class="rounded-circle img-thumbnail me-3 mt-1" width="60" alt="Avatar"
-                                        src="{{ route('user.getImage', Auth::user()->image) }}">
+                                    <div style=""><img class="avatar-rounded"
+                                            style="margin-right:10px;margin-top:10px;" alt="Avatar"
+                                            src="{{ route('user.getImage', Auth::user()->image) }}">
+                                    </div>
                                 @endif
                             @else
                                 @if ($comment->user->image == '/images/default.jpg' || $comment->user->image == null)

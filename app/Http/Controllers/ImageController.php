@@ -8,11 +8,12 @@ use App\Models\Image;
 
 class ImageController extends Controller
 {
+    // Formulario
     public function imgForm()
     {
         return view('image.form');
     }
-
+    // Subir una imagen
     public function upload(Request $request)
     {
         $sesion = Auth::user();
@@ -28,26 +29,24 @@ class ImageController extends Controller
         } else {
             return redirect()->route('img.form')->with('error', 'Error al subir la imagen');
         }
-        // $image_path = $request->file('image_path')->store('uploads', 'public');
-        // return $image_path;
     }
 
+    // Mostrar todas las imagenes
     public function show_all()
     {
         $images = new Image();
         $data = $images->getAll();
         return view('image.posts', ['images' => $data]);
     }
-
-    public function show_id()
+    // Mostrar las imagenes de un usuario
+    public function show_id($id)
     {
-        $user = Auth::user();
         $images = new Image();
-        $data = $images->getImgs($user->id);
-        // return view('dashboard', ['images' => $data]);
-        return view('image/misPosts', ['images' => $data]);
+        $data = $images->getImgs($id);
+        return view('', ['images' => $data]);
     }
 
+    // Mostrar detalles de una imagen
     public function show_details($id_img)
     {
         $image = Image::find($id_img);

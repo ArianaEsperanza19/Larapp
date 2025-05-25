@@ -27,8 +27,6 @@
     <body class="font-sans antialiased">
         @vite('resources/css/styles.css')
 
-        @include('includes.avatar')
-
         <div class="py-12">
             @if (isset($images) && count($images) > 0)
                 @foreach ($images as $image)

@@ -19,6 +19,12 @@
             </div>
 
             <!-- Settings Dropdown -->
+            @vite('resources/css/avatares.css')
+            @if (Auth::user()->image == '/images/default.jpg' || Auth::user()->image == null)
+                <img class='avatar-rounded dropdown' src="{{ route('user.getDefaultAvatar') }}">
+            @else
+                <img class='avatar-rounded dropdown' src="{{ route('user.getImage', Auth::user()->image) }}">
+            @endif
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -45,9 +51,6 @@
                         <!--     {{ __('Profile') }} -->
                         <!-- </x-dropdown-link> -->
                         {{-- Ruta a opciones --}}
-                        <x-dropdown-link :href="route('img.show_id')">
-                            {{ __('Mis Posts') }}
-                        </x-dropdown-link>
                         <x-dropdown-link :href="route('user.config')">
                             {{ __('Settings') }}
                         </x-dropdown-link>

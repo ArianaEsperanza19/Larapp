@@ -9,18 +9,26 @@ use App\Models\Image;
 
 class UserController extends Controller
 {
+    // Ir al dashboard para ver info basica y tus post
     public function dashboard()
     {
-        return view('dashboard');
+        $user = Auth::user();
+        $images = new Image();
+        $data = $images->getImgs($user->id);
+        return view('dashboard', ['images' => $data]);
     }
 
+    // Ver info de un usuario
     public function info($id)
     {
         $user = new User();
         $info = $user->info($id);
-        return view('user.info', array('user' => $info));
+        $user = $info['user'];
+        $images = $info['images'];
+        return view('user.info', compact('user', 'images'));
 
     }
+    // Ir a la configuracion de un usuario
     public function config()
     {
         $sesion = Auth::user();
@@ -29,6 +37,7 @@ class UserController extends Controller
         return view('user.config', array('user' => $info));
     }
 
+    // Actualizar la informacion de un usuario
     public function update(Request $request)
     {
         $sesion = Auth::user();
@@ -44,6 +53,7 @@ class UserController extends Controller
         $user->up($request, $sesion->id);
         return redirect()->route('dashboard')->with('message', "Información actualizada correctamente");
     }
+    // Devuelve la imagen de un usuario
     public function getImage($fileName)
     {
         $user = new User();
@@ -59,11 +69,11 @@ class UserController extends Controller
     }
 
 
-    public function show_img_id()
-    {
-        $user = Auth::user();
-        $images = new Image();
-        $data = $images->getImgs($user->id);
-        return view('dashboard', ['images' => $data]);
-    }
+    /* public function show_img_id() */
+    /* { */
+    /*     $user = Auth::user(); */
+    /*     $images = new Image(); */
+    /*     $data = $images->getImgs($user->id); */
+    /*     return view('dashboard', ['images' => $data]); */
+    /* } */
 }

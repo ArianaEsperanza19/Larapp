@@ -53,6 +53,8 @@
                             </span>
                             <x-btn-blue>Likes <span
                                     class="badge bg-primary">{{ count($image->likes) }}</span></x-btn-blue>
+                            <a
+                                href="{{ route('img.delete', ['id_img' => $image->id, 'id_user' => $image->user_id]) }}">Eliminar</a>
                         </div>
                     </div>
                 </div>

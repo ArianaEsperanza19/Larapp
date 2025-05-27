@@ -54,5 +54,19 @@ class ImageController extends Controller
         return view('image.details', array('image' => $image, 'comments' => $comments));
     }
 
+    public function delete($id_img, $id_user)
+    {
+        $image = Image::find($id_img);
+        if ($id_user && $image && $image->user_id == Auth::user()->id) {
+            $img = new Image();
+            $img->down($image->image_path);
+            $image->delete();
+            return redirect()->route('dashboard')->with('error', 'Imagen eliminada correctamente');
+        } else {
+            $message = 'No tienes permiso para eliminar esta imagen';
+            return redirect()->route('dashboard')->with('error', $message);
+        }
+    }
+
 
 }

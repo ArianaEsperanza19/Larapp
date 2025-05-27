@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::get("/avatar/default", [App\Http\Controllers\UserController::class, 'getDefaultAvatar'])->name('user.getDefaultAvatar');
     Route::get("/img/Form", [App\Http\Controllers\ImageController::class, 'imgForm'])->name('img.form');
     Route::post("/img/up", [App\Http\Controllers\ImageController::class, 'upload'])->name('img.upload');
+    Route::get("/img/down/{id_img}/{id_user}", [App\Http\Controllers\ImageController::class, 'delete'])->name('img.delete');
     Route::get("/img/show/all", [App\Http\Controllers\ImageController::class,'show_all'])->name('img.show_all');
     Route::get("/img/details/{id_img}", [App\Http\Controllers\ImageController::class, 'show_details'])->name('img.details');
     Route::post("/comment/register", [App\Http\Controllers\CommentController::class, 'register'])->name('comment.register');

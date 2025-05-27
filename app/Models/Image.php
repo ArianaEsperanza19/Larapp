@@ -69,4 +69,10 @@ class Image extends Model
         return $img;
 
     }
+
+    public function down($img_path_name)
+    {
+
+        Storage::disk('public')->delete("image/$img_path_name");
+    }
 }

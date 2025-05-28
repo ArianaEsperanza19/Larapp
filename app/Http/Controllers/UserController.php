@@ -34,6 +34,7 @@ class UserController extends Controller
         $sesion = Auth::user();
         $user = new User();
         $info = $user->info($sesion->id);
+        // Convertir en objeto
         return view('user.config', array('user' => $info));
     }
 

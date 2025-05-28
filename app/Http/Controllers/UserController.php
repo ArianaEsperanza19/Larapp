@@ -28,6 +28,7 @@ class UserController extends Controller
         return view('user.info', compact('user', 'images'));
 
     }
+
     // Ir a la configuracion de un usuario
     public function config()
     {
@@ -35,9 +36,8 @@ class UserController extends Controller
         $user = new User();
         $info = $user->info($sesion->id);
         // Convertir en objeto
-        return view('user.config', array('user' => $info));
+        return view('user.config', array('user' => $info['user']));
     }
-
     // Actualizar la informacion de un usuario
     public function update(Request $request)
     {

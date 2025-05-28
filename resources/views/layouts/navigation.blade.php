@@ -54,6 +54,9 @@
                         <x-dropdown-link :href="route('user.config')">
                             {{ __('Settings') }}
                         </x-dropdown-link>
+                        <x-dropdown-link :href="route('img.form.up')">
+                            {{ __('Publicar') }}
+                        </x-dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">

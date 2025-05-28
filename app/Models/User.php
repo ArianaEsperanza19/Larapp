@@ -55,7 +55,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function image()
+    public function images()
     {
         return $this->hasMany(Image::class, 'user_id');
     }
@@ -65,8 +65,9 @@ class User extends Authenticatable
         // $datos = DB::table('users')->where('id', '=', $id)->first();
         /* $datos = $this::all()->where('id', '=', $id)->first(); */
         /* return $datos; */
-        $user = User::with('image')->findOrFail($id); // Obtiene el usuario con sus imágenes
-        return $user;
+        $user = User::find($id);
+        $images = Image::where('user_id', '=', $id);
+        return array('user' => $user, 'images' => $images);
     }
 
     public function up($info, $id)

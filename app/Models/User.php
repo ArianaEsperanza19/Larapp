@@ -120,6 +120,7 @@ class User extends Authenticatable
         return new Response($file, 200);
 
     }
+
     // Obtener la imagen por defecto
     public function getDefaultAvatar()
     {

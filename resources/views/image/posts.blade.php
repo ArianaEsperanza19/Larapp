@@ -67,6 +67,10 @@
                                 </span>
                                 <x-btn-blue>Likes <span
                                         class="badge bg-primary">{{ count($image->likes) }}</span></x-btn-blue>
+                                @if (Auth::user()->id == $image->user_id)
+                                    <a
+                                        href="{{ route('img.delete', ['id_img' => $image->id, 'id_user' => $image->user_id]) }}">Eliminar</a>
+                                @endif
                             </div>
                         </div>
                     </div>

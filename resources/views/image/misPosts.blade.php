@@ -55,6 +55,7 @@
                                     class="badge bg-primary">{{ count($image->likes) }}</span></x-btn-blue>
                             <a
                                 href="{{ route('img.delete', ['id_img' => $image->id, 'id_user' => $image->user_id]) }}">Eliminar</a>
+                            <a href="{{ route('img.form.edit', ['id_img' => $image->id]) }}">Editar</a>
                         </div>
                     </div>
                 </div>

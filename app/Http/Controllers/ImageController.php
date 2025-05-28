@@ -13,6 +13,29 @@ class ImageController extends Controller
     {
         return view('image.form');
     }
+
+    // Formulario de edicion
+    public function form_edit($id)
+    {
+        $user = Auth::user();
+        $image = Image::find($id);
+        if ($user && $image && $image->user_id == Auth::user()->id) {
+            return view('image.edit', array('image' => $image));
+        } else {
+            $message = 'No tienes permiso para editar esta imagen';
+            return redirect()->route('dashboard')->with('error', $message);
+        }
+
+    }
+    // Encontrar miniatura
+    public function miniatura($fileName)
+    {
+        $img = new Image();
+        $file = $img->miniatura($fileName);
+        return $file;
+
+    }
+
     // Subir una imagen
     public function upload(Request $request)
     {
@@ -52,6 +75,25 @@ class ImageController extends Controller
         $image = Image::find($id_img);
         $comments = Image::find($id_img)->comments()->get();
         return view('image.details', array('image' => $image, 'comments' => $comments));
+    }
+
+    public function edit(Request $request)
+    {
+        $validate = $request->validate([
+            'id_img' => 'required|integer',
+            'descripcion' => 'required|string|max:255',
+            'image_path' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        if ($validate) {
+            $img = new Image();
+            $img->edit($request);
+            return redirect()->route('dashboard')->with('message', 'Imagen editada correctamente');
+        }
+
+
+        die();
+
     }
 
     public function delete($id_img, $id_user)

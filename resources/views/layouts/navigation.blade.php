@@ -54,8 +54,8 @@
                         <x-dropdown-link :href="route('user.config')">
                             {{ __('Settings') }}
                         </x-dropdown-link>
-                        <x-dropdown-link :href="route('img.form')">
-                            {{ __('Image') }}
+                        <x-dropdown-link :href="route('img.form.up')">
+                            {{ __('My Posts') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->

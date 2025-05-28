@@ -54,7 +54,7 @@ class UserController extends Controller
         return redirect()->route('dashboard')->with('message', "Información actualizada correctamente");
     }
     // Devuelve la imagen de un usuario
-    public function getImage($fileName)
+    public function getAvatar($fileName)
     {
         $user = new User();
         $file = $user->avatar($fileName);

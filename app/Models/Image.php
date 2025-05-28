@@ -47,6 +47,11 @@ class Image extends Model
         // $images = Image::where('user_id', $id)->get();
         return $images;
     }
+    public function miniatura($name)
+    {
+        $file = Storage::disk('public')->get("image/$name");
+        return new Response($file, 200);
+    }
 
     public function up(Request $request, $id)
     {
@@ -67,6 +72,31 @@ class Image extends Model
             'description' => $datos['descripcion']
         ])->save();
         return $img;
+
+    }
+
+    public function edit(Request $request)
+    {
+        $image_path = $request->file('image');
+        $datos = Image::find($request->id_img);
+        $datos->description = $request->descripcion;
+
+        if ($image_path) {
+            // Borrar imagen anterior
+            Storage::disk('public')->delete("image/$datos->image_path");
+            // Generar un nombre único para la imagen
+            $img_path = $request->file('image')->getClientOriginalName(); // Ejemplo: "foto.jpg"
+            $Justimg_name = pathinfo($img_path, PATHINFO_FILENAME); // Resultado: "foto"
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $img_path_name = $Justimg_name. "_". time() . '.' . $extension; // Nombre único + extensión original
+            Storage::disk('public')->put("image/$img_path_name", File::get($request->file('image')));
+
+        }
+        // Cambiar nombre
+        $datos->image_path = $img_path_name;
+        // Actualizar
+        $datos->update();
+        return redirect()->route('dashboard')->with('message', 'Imagen editada correctamente');
 
     }
 

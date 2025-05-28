@@ -16,11 +16,14 @@ Route::middleware('auth')->group(function () {
     Route::get("/profile/{id}", [App\Http\Controllers\UserController::class, 'info'])->name('profile.info');
     Route::get('/config', [App\Http\Controllers\UserController::class, 'config'])->name('user.config');
     Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
-    Route::get('/userAvatar/{fileName}', [App\Http\Controllers\UserController::class, 'getImage'])->name('user.getImage');
+    Route::get('/userAvatar/{fileName}', [App\Http\Controllers\UserController::class, 'getAvatar'])->name('user.getImage');
+    Route::get('/miniatura/{fileName}', [App\Http\Controllers\ImageController::class, 'miniatura'])->name('img.miniatura');
     Route::get("/avatar/default", [App\Http\Controllers\UserController::class, 'getDefaultAvatar'])->name('user.getDefaultAvatar');
-    Route::get("/img/Form", [App\Http\Controllers\ImageController::class, 'imgForm'])->name('img.form');
+    Route::get("/img/form/up", [App\Http\Controllers\ImageController::class, 'imgForm'])->name('img.form.up');
     Route::post("/img/up", [App\Http\Controllers\ImageController::class, 'upload'])->name('img.upload');
     Route::get("/img/down/{id_img}/{id_user}", [App\Http\Controllers\ImageController::class, 'delete'])->name('img.delete');
+    Route::get("img/form/edit/{id_img}", [App\Http\Controllers\ImageController::class, 'form_edit'])->name('img.form.edit');
+    Route::post("img/edit", [App\Http\Controllers\ImageController::class, 'edit'])->name('img.edit');
     Route::get("/img/show/all", [App\Http\Controllers\ImageController::class,'show_all'])->name('img.show_all');
     Route::get("/img/details/{id_img}", [App\Http\Controllers\ImageController::class, 'show_details'])->name('img.details');
     Route::post("/comment/register", [App\Http\Controllers\CommentController::class, 'register'])->name('comment.register');

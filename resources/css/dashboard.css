@@ -4,6 +4,21 @@
     margin: 0 auto;
     margin-top: 50px;
 }
+.info-index-box {
+    width: 40%;
+    height: 250px;
+    float: left;
+}
+.avatar-index {
+    width: 100px;
+    aspect-ratio: 1/1; /* Mantiene la imagen cuadrada */
+    border-radius: 50%;
+    float: left;
+    overflow: hidden;
+    object-fit: cover;
+    margin-top: 25px;
+    margin-left: 25px;
+}
 .big-avatar {
     width: 200px;
     aspect-ratio: 1/1; /* Mantiene la imagen cuadrada */

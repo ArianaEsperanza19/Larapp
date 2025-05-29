@@ -9,6 +9,14 @@ use App\Models\Image;
 
 class UserController extends Controller
 {
+    // Indice de usuarios
+    public function index()
+    {
+        $users = new User();
+        $data = $users->users();
+        return view('user.index', ['users' => $data]);
+
+    }
     // Ir al dashboard para ver info basica y tus post
     public function dashboard()
     {

@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 // use Illuminate\Support\Facades\DB;
 
@@ -58,6 +59,15 @@ class User extends Authenticatable
     public function images()
     {
         return $this->hasMany(Image::class, 'user_id');
+    }
+
+    public function users()
+    {
+        $datos = User::where('id', '!=', Auth::user()->id)
+                     ->orderBy('id', 'desc')
+                     ->paginate(5);
+        return $datos;
+
     }
 
     public function info($id)

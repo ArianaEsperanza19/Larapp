@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::get("/profile/{id}", [App\Http\Controllers\UserController::class, 'info'])->name('profile.info');
     Route::get('/config', [App\Http\Controllers\UserController::class, 'config'])->name('user.config');
     Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+    Route::get('/user/index', [App\Http\Controllers\UserController::class, 'index'])->name('user.index');
     Route::get('/userAvatar/{fileName}', [App\Http\Controllers\UserController::class, 'getAvatar'])->name('user.getImage');
     Route::get('/miniatura/{fileName}', [App\Http\Controllers\ImageController::class, 'miniatura'])->name('img.miniatura');
     Route::get("/avatar/default", [App\Http\Controllers\UserController::class, 'getDefaultAvatar'])->name('user.getDefaultAvatar');

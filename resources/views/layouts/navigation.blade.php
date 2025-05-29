@@ -55,7 +55,10 @@
                             {{ __('Settings') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="route('img.form.up')">
-                            {{ __('Publicar') }}
+                            {{ __('Publish') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('user.index')">
+                            {{ __('People') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->

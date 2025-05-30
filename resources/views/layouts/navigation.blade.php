@@ -44,7 +44,7 @@
                     </x-slot>
                     {-- Upper Menu --}
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('dashboard')">
                             {{ __('Home') }}
                         </x-dropdown-link>
                         <!-- <x-dropdown-link :href="route('profile.edit')"> -->

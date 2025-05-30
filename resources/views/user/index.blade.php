@@ -1,32 +1,51 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('People') }}
-        </h2>
-    </x-slot>
     @vite('resources/css/styles.css')
     @vite('resources/css/dashboard.css')
-    <br>
-    @foreach ($users as $user)
-        <div class="info-index-box">
-            <div>
-                @if ($user->image == '/images/default.jpg' || $user->image == null)
-                    <img class="avatar-index" src="{{ route('user.getDefaultAvatar') }}"
-                        class="rounded-circle img-thumbnail me-3 mt-1" width="60">
-                @else
-                    <img class="avatar-index" src="{{ route('user.getImage', ['fileName' => $user->image]) }}"
-                        class="rounded-circle img-thumbnail me-3 mt-1" width="60">
-                @endif
-                <div class="info-container">
-                    <div class="User"><?php echo '@'; ?>{{ $user->name }} {{ $user->surname }}</div>
-                    <div>Se unió: {{ $user->created_at->diffForHumans() }}</div>
-                    <div class="Email">{{ $user->email }}</div>
-                    <a href="{{ route('profile.info', ['id' => $user->id]) }}">Ver perfil</a>
+    @vite('resources/js/main.js')
+    <!DOCTYPE html>
+    <html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <!-- Contenido aquí -->
+    </body>
+
+    </html>
+    <x-app-layout>
+        <x-slot name="header">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                {{ __('People') }}
+            </h2>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="{{ asset('js/main.js') }}"></script>
+            <form method="get" action="{{ route('user.index') }}" class="mt-6 space-y-6" id="searcher">
+                <input type="text" name="search" id="search" placeholder="Busca un usuario">
+                <button type="submit" class="btn btn-primary" value="Buscar" id="submit">Buscar</button>
+            </form>
+        </x-slot>
+        <br>
+        @foreach ($users as $user)
+            <div class="info-index-box">
+                <div>
+                    @if ($user->image == '/images/default.jpg' || $user->image == null)
+                        <img class="avatar-index" src="{{ route('user.getDefaultAvatar') }}"
+                            class="rounded-circle img-thumbnail me-3 mt-1" width="60">
+                    @else
+                        <img class="avatar-index" src="{{ route('user.getImage', ['fileName' => $user->image]) }}"
+                            class="rounded-circle img-thumbnail me-3 mt-1" width="60">
+                    @endif
+                    <div class="info-container">
+                        <div class="User"><?php echo '@'; ?>{{ $user->name }} {{ $user->surname }}</div>
+                        <div>Se unió: {{ $user->created_at->diffForHumans() }}</div>
+                        <div class="Email">{{ $user->email }}</div>
+                        <a href="{{ route('profile.info', ['id' => $user->id]) }}">Ver perfil</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr>
-        <div style="clear: both"></div>
-    @endforeach
+            <hr>
+            <div style="clear: both"></div>
+        @endforeach
 
-</x-app-layout>
+    </x-app-layout>

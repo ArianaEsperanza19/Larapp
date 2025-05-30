@@ -70,6 +70,17 @@ class User extends Authenticatable
 
     }
 
+    public function search($search)
+    {
+        $datos = User::where('name', 'like', '%' . $search . '%')
+                     ->orWhere('surname', 'like', '%' . $search . '%')
+                     ->orWhere('role', 'like', '%' . $search . '%')
+                     ->orWhere('email', 'like', '%' . $search . '%')
+                     ->orderBy('id', 'desc')
+                     ->paginate(5);
+        return $datos;
+    }
+
     public function info($id)
     {
         // $datos = DB::table('users')->where('id', '=', $id)->first();

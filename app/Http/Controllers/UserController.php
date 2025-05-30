@@ -10,11 +10,17 @@ use App\Models\Image;
 class UserController extends Controller
 {
     // Indice de usuarios
-    public function index()
+    public function index($search = null)
     {
-        $users = new User();
-        $data = $users->users();
-        return view('user.index', ['users' => $data]);
+        if ($search != null) {
+            $users = new User();
+            $data = $users->search($search);
+            return view('user.index', ['users' => $data]);
+        } else {
+            $users = new User();
+            $data = $users->users();
+            return view('user.index', ['users' => $data]);
+        }
 
     }
     // Ir al dashboard para ver info basica y tus post

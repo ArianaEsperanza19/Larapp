@@ -9,6 +9,7 @@ export default defineConfig({
                 "resources/css/styles.css",
                 "resources/css/avatares.css",
                 "resources/js/app.js",
+                "resources/js/main.js",
             ],
             refresh: true,
         }),

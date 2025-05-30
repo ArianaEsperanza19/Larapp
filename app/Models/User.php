@@ -98,6 +98,8 @@ class User extends Authenticatable
         // Verificar si se subió una imagen
         if ($info->hasFile('image')) {
 
+            Storage::disk('public')->delete("users/$user->image");
+
             // Generar un nombre único para la imagen
             $img_path = $info->file('image')->getClientOriginalName(); // Ejemplo: "foto.jpg"
             $Justimg_name = pathinfo($img_path, PATHINFO_FILENAME); // Resultado: "foto"

@@ -47,10 +47,6 @@
                         <x-dropdown-link :href="route('dashboard')">
                             {{ __('Home') }}
                         </x-dropdown-link>
-                        <!-- <x-dropdown-link :href="route('profile.edit')"> -->
-                        <!--     {{ __('Profile') }} -->
-                        <!-- </x-dropdown-link> -->
-                        {{-- Ruta a opciones --}}
                         <x-dropdown-link :href="route('user.config')">
                             {{ __('Settings') }}
                         </x-dropdown-link>

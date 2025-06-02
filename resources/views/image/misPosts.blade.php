@@ -43,22 +43,31 @@
                             </p>
                         </div>
 
-                        <div class="card-footer bg-light d-flex justify-content-between align-items-center">
-                            <span class="text-muted">
-                                @if (count($image->comments) == 0 || count($image->comments) > 1)
-                                    Comentarios {{ count($image->comments) }}
-                                @else
-                                    Comentario {{ count($image->comments) }}
-                                @endif
-                            </span>
-                            <x-btn-blue>Likes <span
-                                    class="badge bg-primary">{{ count($image->likes) }}</span></x-btn-blue>
-                            <a
-                                href="{{ route('img.delete', ['id_img' => $image->id, 'id_user' => $image->user_id]) }}">Eliminar</a>
-                            <a href="{{ route('img.form.edit', ['id_img' => $image->id]) }}">Editar</a>
+                        <div class="container">
+                            <div class="row">
+                                <div class="card-footer bg-light d-flex justify-content-between align-items-center">
+                                    <div class="d-flex justify-content-start mb-2 mr-2">
+                                        <span class="text-muted">
+                                            @if (count($image->comments) == 0 || count($image->comments) > 1)
+                                                Comentarios {{ count($image->comments) }}
+                                            @else
+                                                Comentario {{ count($image->comments) }}
+                                            @endif
+                                        </span>
+                                        <div class="bg-light d-flex justify-content-start ml-2">
+                                            <span class="text-muted">| Likes {{ count($image->likes) }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <a class="btn btn-danger"
+                                            href="{{ route('img.delete', ['id_img' => $image->id, 'id_user' => $image->user_id]) }}">Eliminar</a>
+                                        <a class="btn btn-primary"
+                                            href="{{ route('img.form.edit', ['id_img' => $image->id]) }}">Editar</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
             @endforeach
 
             <!-- Paginacion -->

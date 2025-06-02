@@ -90,7 +90,7 @@
                         <div class="text-end mb-3">
                             @if (Auth::user()->id == $comment->user_id)
                                 <x-btn-blue>Editar</x-btn-blue>
-                                <x-btn-delete><a href="{{ route('comment.delete', $comment->id) }}"
+                                <x-btn-delete><a class="text-white" href="{{ route('comment.delete', $comment->id) }}"
                                         style="text-decoration: none">Eliminar</a></x-btn-delete>
                             @endif
                         </div>

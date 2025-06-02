@@ -51,6 +51,8 @@
                         </p>
                     </div>
 
+                    <link rel="stylesheet"
+                        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
                     <div class="card-footer bg-light d-flex justify-content-between align-items-center">
                         <span class="text-muted">
                             @if (count($image->comments) == 0 || count($image->comments) > 1)
@@ -59,7 +61,9 @@
                                 Comentario {{ count($image->comments) }}
                             @endif
                         </span>
-                        <x-btn-blue>Likes <span class="badge bg-primary">{{ count($image->likes) }}</span></x-btn-blue>
+                        <div class="mt-1 mb-1 text-muted">Likes <span
+                                class="text-primary">{{ count($image->likes) }}</span>
+                        </div>
                     </div>
                 </div>
             </div>

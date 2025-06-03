@@ -26,26 +26,28 @@
             </form>
         </x-slot>
         <br>
-        @foreach ($users as $user)
-            <div class="info-index-box">
-                <div>
-                    @if ($user->image == '/images/default.jpg' || $user->image == null)
-                        <img class="avatar-index" src="{{ route('user.getDefaultAvatar') }}"
-                            class="rounded-circle img-thumbnail me-3 mt-1" width="60">
-                    @else
-                        <img class="avatar-index" src="{{ route('user.getImage', ['fileName' => $user->image]) }}"
-                            class="rounded-circle img-thumbnail me-3 mt-1" width="60">
-                    @endif
-                    <div class="info-container">
-                        <div class="User"><?php echo '@'; ?>{{ $user->name }} {{ $user->surname }}</div>
-                        <div>Se unió: {{ $user->created_at->diffForHumans() }}</div>
-                        <div class="Email">{{ $user->email }}</div>
-                        <a href="{{ route('profile.info', ['id' => $user->id]) }}">Ver perfil</a>
+        <x-box-layout>
+            @foreach ($users as $user)
+                <div class="info-index-box">
+                    <div>
+                        @if ($user->image == '/images/default.jpg' || $user->image == null)
+                            <img class="avatar-index" src="{{ route('user.getDefaultAvatar') }}"
+                                class="rounded-circle img-thumbnail me-3 mt-1" width="60">
+                        @else
+                            <img class="avatar-index" src="{{ route('user.getImage', ['fileName' => $user->image]) }}"
+                                class="rounded-circle img-thumbnail me-3 mt-1" width="60">
+                        @endif
+                        <div class="info-container">
+                            <div class="User"><?php echo '@'; ?>{{ $user->name }} {{ $user->surname }}</div>
+                            <div>Se unió: {{ $user->created_at->diffForHumans() }}</div>
+                            <div class="Email">{{ $user->email }}</div>
+                            <a href="{{ route('profile.info', ['id' => $user->id]) }}">Ver perfil</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <hr>
-            <div style="clear: both"></div>
-        @endforeach
+                <div style="clear: both"></div>
+                <br>
+            @endforeach
+        </x-box-layout>
 
     </x-app-layout>

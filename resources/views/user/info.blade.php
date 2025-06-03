@@ -1,5 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+        <link rel="preconnect" href="https://fonts.bunny.net">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Profile') }}
         </h2>
@@ -70,7 +72,6 @@
         @endforeach
     </div>
     <!-- Paginacion -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
     <div class='pag'>
         {{ $images->links() }}
     </div>

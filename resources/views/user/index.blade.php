@@ -8,9 +8,8 @@
         <meta charset="UTF-8">
     </head>
 
-    <body>
-        <!-- Contenido aquí -->
-    </body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.bunny.net">
 
     </html>
     <x-app-layout>
@@ -22,7 +21,7 @@
             <script src="{{ asset('js/main.js') }}"></script>
             <form method="get" action="{{ route('user.index') }}" class="space-y-6 mt-2" id="searcher">
                 <input type="text" name="search" id="search" placeholder="Busca un usuario">
-                <a type="submit" class="btn btn-outline-primary" value="Buscar" id="submit">Buscar</a>
+                <a type="submit" class="btn btn-primary mb-4 ml-1" value="Buscar" id="submit">Buscar</a>
             </form>
         </x-slot>
         <br>
@@ -41,11 +40,14 @@
                             <div class="User"><?php echo '@'; ?>{{ $user->name }} {{ $user->surname }}</div>
                             <div>Se unió: {{ $user->created_at->diffForHumans() }}</div>
                             <div class="Email">{{ $user->email }}</div>
-                            <a href="{{ route('profile.info', ['id' => $user->id]) }}">Ver perfil</a>
+                            <a class="btn btn-outline-primary ml-0"
+                                href="{{ route('profile.info', ['id' => $user->id]) }}">Ver
+                                perfil</a>
                         </div>
                     </div>
                 </div>
                 <div style="clear: both"></div>
+                <br>
                 <br>
             @endforeach
         </x-box-layout>

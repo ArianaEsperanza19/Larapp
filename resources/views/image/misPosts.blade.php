@@ -58,7 +58,7 @@
                                             <span class="text-muted">| Likes {{ count($image->likes) }}</span>
                                         </div>
                                     </div>
-                                    <div class="ml-auto">
+                                    <div class="">
                                         <a class="btn btn-danger"
                                             href="{{ route('img.delete', ['id_img' => $image->id, 'id_user' => $image->user_id]) }}">Eliminar</a>
                                         <a class="btn btn-primary"

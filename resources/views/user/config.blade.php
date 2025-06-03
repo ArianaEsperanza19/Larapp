@@ -71,6 +71,12 @@
                         <x-input-error class="mt-2" :messages="$errors->get('surname')" />
                     </div>
                     <div>
+                        <x-input-label for="nickname" :value="__('Nickname')" />
+                        <x-text-input id="nickname" name="nickname" type="text" class="mt-1 block w-full"
+                            :value="old('nickname', $user->nickname)" required autofocus autocomplete="nickname" />
+                        <x-input-error class="mt-2" :messages="$errors->get('nickname')" />
+                    </div>
+                    <div>
                         <x-input-label for="role" :value="__('Role')" />
                         <x-text-input id="role" name="role" type="text" class="mt-1 block w-full"
                             :value="old('role', $user->role)" required autofocus autocomplete="role" />

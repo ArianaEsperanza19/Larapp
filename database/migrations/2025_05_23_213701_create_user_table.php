@@ -15,6 +15,7 @@ return new class () extends Migration {
             $table->string('role', 20);
             $table->string('name', 100);
             $table->string('surname', 200);
+            $table->string('nickname', 100)->nullable()->unique();
             $table->string('email', 255)->unique();
             $table->string('password', 255);
             $table->string('image', 255)->nullable();

@@ -28,7 +28,8 @@
         <x-box-layout>
             @foreach ($users as $user)
                 <div class="info-index-box">
-                    <div>
+                    {{-- Add a class to this parent div for better styling --}}
+                    <div class="user-item-content">
                         @if ($user->image == '/images/default.jpg' || $user->image == null)
                             <img class="avatar-index" src="{{ route('user.getDefaultAvatar') }}"
                                 class="rounded-circle img-thumbnail me-3 mt-1" width="60">
@@ -37,16 +38,17 @@
                                 class="rounded-circle img-thumbnail me-3 mt-1" width="60">
                         @endif
                         <div class="info-container">
-                            <div class="User"><?php echo '@'; ?>{{ $user->name }} {{ $user->surname }}</div>
+                            <div class="User">{{ $user->name }} {{ $user->surname }}</div>
+                            <div class="nickname"><?php echo '@'; ?>{{ $user->nickname }}</div>
                             <div>Se unió: {{ $user->created_at->diffForHumans() }}</div>
-                            <div class="Email">{{ $user->email }}</div>
                             <a class="btn btn-outline-primary ml-0"
                                 href="{{ route('profile.info', ['id' => $user->id]) }}">Ver
                                 perfil</a>
                         </div>
-                    </div>
+                    </div> {{-- Close user-item-content --}}
                 </div>
                 <div style="clear: both"></div>
+                <br>
                 <br>
                 <br>
             @endforeach

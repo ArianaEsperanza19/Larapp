@@ -13,7 +13,7 @@
     width: 100px;
     aspect-ratio: 1/1; /* Mantiene la imagen cuadrada */
     border-radius: 50%;
-    float: left;
+    float: none;
     overflow: hidden;
     object-fit: cover;
     margin-top: 25px;
@@ -38,13 +38,16 @@
 
 .info-container {
     float: left;
-    padding-top: 25px;
     padding-left: 30px;
 }
 
 .User {
     font-size: 30px;
     font-weight: bold;
+}
+
+.nickname {
+    font-size: 20px;
 }
 
 .Email {

@@ -27,8 +27,10 @@
         <div>
             <div class="big-avatar">@include('includes.avatar2')</div>
             <div class="info-container">
-                <div class="User"><?php echo '@'; ?>{{ Auth::user()->name }} {{ Auth::user()->surname }}</div>
-                <div class="Email">{{ Auth::user()->email }}</div>
+                <div class="User">{{ Auth::user()->name }} {{ Auth::user()->surname }}</div>
+                @if (Auth::user()->nickname != null)
+                    <div class="nickname"><?php echo '@'; ?>{{ Auth::user()->nickname }} </div>
+                @endif
                 <div>Se unió: {{ Auth::user()->created_at->diffForHumans() }}</div>
             </div>
         </div>

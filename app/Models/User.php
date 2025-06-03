@@ -27,6 +27,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'surname',
+        'nickname',
         'role',
         'email',
         'image',
@@ -122,6 +123,7 @@ class User extends Authenticatable
         $user->fill([
             'name' => $info->name,
             'surname' => $info->surname,
+            'nickname' => $info->nickname,
             'role' => $info->role ?? "user",
             'email' => $info->email,
         ]);

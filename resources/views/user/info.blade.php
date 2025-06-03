@@ -20,8 +20,10 @@
                 @endif
             </div>
             <div class="info-container">
-                <div class="User"><?php echo '@'; ?>{{ $user->name }} {{ $user->surname }}</div>
-                <div class="Email">{{ $user->email }}</div>
+                <div class="User">{{ $user->name }} {{ $user->surname }}</div>
+                @if (Auth::user()->nickname != null)
+                    <div class="nickname"><?php echo '@'; ?>{{ $user->nickname }} </div>
+                @endif
                 <div>Se unió: {{ $user->created_at->diffForHumans() }}</div>
             </div>
         </div>

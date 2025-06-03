@@ -9,17 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class LikesController extends Controller
 {
+    // Dar o quitar like
     public function like($id)
     {
         // Recoger datos del usuario y la imagen
         $user = Auth::user()->id;
         $image = Image::find($id)->id;
-        /* echo "<pre>"; */
-        /* print_r($image); */
-        /* echo "</pre>"; */
-        /* echo "<pre>"; */
-        /* print_r($user); */
-        /* echo "</pre>"; */
 
         // Comprobar si ya existe el like
         $like = new Like();
@@ -31,6 +26,7 @@ class LikesController extends Controller
             }
 
         } else {
+            //  Borrar el like
             if ($like->down($user, $image)) {
                 return redirect()->route('img.details', ['id_img' => $id]);
             } else {
@@ -40,8 +36,4 @@ class LikesController extends Controller
 
     }
 
-    public function unlike($id)
-    {
-
-    }
 }

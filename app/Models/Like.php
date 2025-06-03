@@ -18,6 +18,8 @@ class Like extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
+
+    // Me gusta
     public function up($user, $image)
     {
         $like = new Like();
@@ -33,6 +35,8 @@ class Like extends Model
 
 
     }
+
+    // No me gusta
     public function down($user, $image)
     {
         $like = Like::where('user_id', $user)->where('image_id', $image)->first();

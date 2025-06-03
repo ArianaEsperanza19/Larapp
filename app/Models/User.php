@@ -60,7 +60,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Image::class, 'user_id');
     }
+    public function comments()
+    {
+        # Have many comments
+        return $this->hasMany('App\Models\Comment');
+    }
 
+    // Obtener todos los usuarios
     public function users()
     {
         $datos = User::where('id', '!=', Auth::user()->id)
@@ -70,6 +76,7 @@ class User extends Authenticatable
 
     }
 
+    // Buscar un usuario
     public function search($search)
     {
         $datos = User::where('name', 'like', '%' . $search . '%')
@@ -81,16 +88,15 @@ class User extends Authenticatable
         return $datos;
     }
 
+    // Obtener informacion de un usuario
     public function info($id)
     {
-        // $datos = DB::table('users')->where('id', '=', $id)->first();
-        /* $datos = $this::all()->where('id', '=', $id)->first(); */
-        /* return $datos; */
         $user = User::find($id);
         $images = Image::where('user_id', '=', $id)->paginate(2);
         return array('user' => $user, 'images' => $images);
     }
 
+    // Editar informacion de un usuario
     public function up($info, $id)
     {
         $user = User::find($id);
@@ -105,17 +111,6 @@ class User extends Authenticatable
             $Justimg_name = pathinfo($img_path, PATHINFO_FILENAME); // Resultado: "foto"
             $extension = $info->file('image')->getClientOriginalExtension();
             $img_path_name = $Justimg_name. "_". time() . '.' . $extension; // Nombre único + extensión original
-
-            // Almacenar en storage/app/public/users
-            // $info->file('image')->storeAs('users', $img_path_name, 'public'); // Corregido aquí
-            // Sofia@sofia.com 12345678
-            // $file = 'users/' . $user->image;
-            // if (Storage::disk('public')->exists($file)) {
-            //     echo 'La imagen existe.';
-            // } else {
-            //     echo 'La imagen no existe.';
-            //     Storage::disk('public')->put("users/$img_path_name", File::get($info->file('image')));
-            // }
 
             Storage::disk('public')->put("users/$img_path_name", File::get($info->file('image')));
 
@@ -133,6 +128,8 @@ class User extends Authenticatable
 
         $user->save();
     }
+
+    // Comprobar si la imagen existe
     public function comprobarImg($name, $disk)
     {
         $file = "$disk/" . $name;
@@ -142,6 +139,8 @@ class User extends Authenticatable
             return false;
         }
     }
+
+    // Obtener avatar
     public function avatar($name)
     {
         // Atencion, es necesario requerir Storage y Response
@@ -149,14 +148,12 @@ class User extends Authenticatable
         return new Response($file, 200);
 
     }
+
+    // Obtener avatar por defecto
     public function getDefaultAvatar()
     {
         $file = Storage::disk('public')->get("default/avatar.webp");
         return new Response($file, 200);
     }
-    public function comments()
-    {
-        # Have many comments
-        return $this->hasMany('App\Models\Comment');
-    }
+
 }

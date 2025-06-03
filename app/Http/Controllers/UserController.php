@@ -68,6 +68,7 @@ class UserController extends Controller
         $user->up($request, $sesion->id);
         return redirect()->route('dashboard')->with('message', "Información actualizada correctamente");
     }
+
     // Devuelve la imagen de un usuario
     public function getAvatar($fileName)
     {
@@ -76,6 +77,8 @@ class UserController extends Controller
         return $file;
 
     }
+
+    // Devuelve la imagen por defecto
     public function getDefaultAvatar()
     {
         $user = new User();
@@ -83,12 +86,4 @@ class UserController extends Controller
         return $file;
     }
 
-
-    /* public function show_img_id() */
-    /* { */
-    /*     $user = Auth::user(); */
-    /*     $images = new Image(); */
-    /*     $data = $images->getImgs($user->id); */
-    /*     return view('dashboard', ['images' => $data]); */
-    /* } */
 }

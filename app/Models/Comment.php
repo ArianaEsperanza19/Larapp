@@ -18,6 +18,8 @@ class Comment extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
+
+    //  Subir comentario
     public function up($info)
     {
         $comment = new Comment();
@@ -33,6 +35,7 @@ class Comment extends Model
         }
     }
 
+    // Borrar comentario
     public function down($id)
     {
         $comment = Comment::find($id);

@@ -7,6 +7,7 @@ use App\Models\Comment;
 
 class CommentController extends Controller
 {
+    // Registrar comentario
     public function register(Request $request)
     {
         # monstrar nombre
@@ -22,6 +23,7 @@ class CommentController extends Controller
 
     }
 
+    // Eliminar comentario
     public function delete($id)
     {
         $comment = new Comment();

@@ -29,6 +29,7 @@ class Image extends Model
         return $this->belongsTo('App\Models\User', 'user_id');
     }
 
+    // Obtener todos los post
     public function getAll()
     {
         // $images = Image::Paginate(2);
@@ -38,24 +39,28 @@ class Image extends Model
 
     }
 
+    // Obtener imagenes de un usuario
     public function getImgs($id)
     {
         $images = Image::where('user_id', '=', $id)
                ->orderBy('created_at', 'desc')
                ->paginate(2);
 
-        // $images = Image::where('user_id', $id)->get();
         return $images;
     }
+
+    // Obtener miniaturas para previsualizar
     public function miniatura($name)
     {
         $file = Storage::disk('public')->get("image/$name");
         return new Response($file, 200);
     }
 
+    // Subir una imagen
     public function up(Request $request, $id)
     {
         $datos = $request->all();
+        // Verificar si se ha subido una imagen
         if ($request->hasFile('image')) {
 
             // Generar un nombre único para la imagen
@@ -75,12 +80,14 @@ class Image extends Model
 
     }
 
+    // Editar post
     public function edit(Request $request)
     {
         $image_path = $request->file('image');
         $datos = Image::find($request->id_img);
         $datos->description = $request->descripcion;
 
+        // Verificar si se ha subido una imagen
         if ($image_path) {
             // Borrar imagen anterior
             Storage::disk('public')->delete("image/$datos->image_path");
@@ -100,6 +107,7 @@ class Image extends Model
 
     }
 
+    // Eliminar post
     public function down($img_path_name)
     {
 

@@ -77,6 +77,7 @@ class ImageController extends Controller
         return view('image.details', array('image' => $image, 'comments' => $comments));
     }
 
+    // Editar post
     public function edit(Request $request)
     {
         $validate = $request->validate([
@@ -96,6 +97,7 @@ class ImageController extends Controller
 
     }
 
+    // Eliminar imagen
     public function delete($id_img, $id_user)
     {
         $image = Image::find($id_img);
@@ -109,6 +111,5 @@ class ImageController extends Controller
             return redirect()->route('dashboard')->with('error', $message);
         }
     }
-
 
 }

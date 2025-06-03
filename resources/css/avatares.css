@@ -4,6 +4,7 @@
     border-radius: 50%;
     overflow: hidden;
     object-fit: cover;
+    flex-shrink: 0; /* This is the key: prevents the avatar from shrinking */
 }
 
 .dropdown {
@@ -13,5 +14,5 @@
     overflow: hidden;
     object-fit: cover;
     margin-top: 8px;
-    margin-left: 74%;
+    margin-left: 74%; /* This margin-left looks a bit unusual for responsive layouts, consider using flexbox properties like gap or justify-content */
 }

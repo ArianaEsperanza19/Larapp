@@ -27,7 +27,7 @@
 
     <!-- Imágenes del usuario -->
     <div class="user-images">
-        @foreach ($user->images as $image)
+        @foreach ($images as $image)
             <div class="container py-4">
                 <div class="card shadow-sm bg-white dark:bg-gray-800">
                     <div class="card-body text-gray-900 dark:text-gray-100">
@@ -70,5 +70,9 @@
         @endforeach
     </div>
     <!-- Paginacion -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+    <div class='pag'>
+        {{ $images->links() }}
+    </div>
 
 </x-app-layout>

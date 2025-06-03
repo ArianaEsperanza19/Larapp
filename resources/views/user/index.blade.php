@@ -16,13 +16,13 @@
     <x-app-layout>
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('People') }}
+                {{ __('User Index') }}
             </h2>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="{{ asset('js/main.js') }}"></script>
-            <form method="get" action="{{ route('user.index') }}" class="mt-6 space-y-6" id="searcher">
+            <form method="get" action="{{ route('user.index') }}" class="space-y-6 mt-2" id="searcher">
                 <input type="text" name="search" id="search" placeholder="Busca un usuario">
-                <button type="submit" class="btn btn-primary" value="Buscar" id="submit">Buscar</button>
+                <a type="submit" class="btn btn-outline-primary" value="Buscar" id="submit">Buscar</a>
             </form>
         </x-slot>
         <br>

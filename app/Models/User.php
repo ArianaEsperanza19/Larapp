@@ -87,7 +87,7 @@ class User extends Authenticatable
         /* $datos = $this::all()->where('id', '=', $id)->first(); */
         /* return $datos; */
         $user = User::find($id);
-        $images = Image::where('user_id', '=', $id);
+        $images = Image::where('user_id', '=', $id)->paginate(2);
         return array('user' => $user, 'images' => $images);
     }
 

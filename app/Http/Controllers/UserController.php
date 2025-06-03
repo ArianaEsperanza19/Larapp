@@ -39,8 +39,8 @@ class UserController extends Controller
         $info = $user->info($id);
         $user = $info['user'];
         $images = $info['images'];
-        return view('user.info', compact('user', 'images'));
 
+        return view('user.info', compact('user', 'images'));
     }
 
     // Ir a la configuracion de un usuario

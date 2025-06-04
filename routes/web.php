@@ -2,7 +2,6 @@
 
 require __DIR__.'/auth.php';
 use Illuminate\Support\Facades\Route;
-use App\Models\Image;
 
 Route::get('/', function () {
     return view('welcome');

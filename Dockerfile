@@ -1,5 +1,5 @@
 # Usamos una imagen base de PHP oficial de Docker
-FROM php:8.1-fpm-alpine
+FROM php:8.2-fpm-alpine
 
 # Instalamos las dependencias del sistema necesarias
 RUN apk add --no-cache libzip-dev libpng-dev libjpeg-turbo-dev libwebp-dev \

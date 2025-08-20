@@ -20,11 +20,8 @@ WORKDIR /var/www/html
 
 # Instala las dependencias de Laravel
 RUN composer install --no-dev --optimize-autoloader
-# AÑADE ESTAS LÍNEAS 👇
 # Limpia el cache de Laravel (muy importante para leer las nuevas variables de entorno)
 RUN php artisan config:clear
-RUN php artisan cache:clear
-# Luego genera un nuevo cache para optimizar el rendimiento
 RUN php artisan config:cache
 RUN php artisan route:cache
 RUN php artisan view:cache

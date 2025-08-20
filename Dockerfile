@@ -9,7 +9,6 @@ RUN apk add --no-cache libzip-dev libpng-dev libjpeg-turbo-dev libwebp-dev \
     && docker-php-ext-enable opcache \
     && rm -rf /var/cache/apk/*
 
-# AÑADE ESTA LÍNEA 👇
 RUN apk add --no-cache mysql-client
 
 # Copia los archivos de Composer y el proyecto

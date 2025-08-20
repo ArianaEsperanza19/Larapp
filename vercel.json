@@ -2,10 +2,11 @@
     "version": 2,
     "builds": [
         {
-            "src": "public/index.php",
-            "use": "@now/static-build",
+            "src": "package.json",
+            "use": "@vercel/static-build",
             "config": {
-                "buildCommand": "npm install && npm run build"
+                "buildCommand": "npm install && npm run build",
+                "outputDirectory": "public"
             }
         }
     ],

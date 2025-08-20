@@ -8,8 +8,8 @@
         <meta charset="UTF-8">
     </head>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
 
     </html>
     <x-app-layout>

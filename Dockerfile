@@ -28,6 +28,10 @@ RUN php artisan view:cache
 
 # Publica la configuración de Laravel
 RUN php artisan config:cache
+# Otorga permisos de escritura al directorio de almacenamiento
+RUN chmod -R 775 storage
+# Otorga permisos de escritura al directorio de cache
+RUN chmod -R 775 bootstrap/cache
 
 # Expone el puerto 9000 para PHP-FPM
 EXPOSE 9000

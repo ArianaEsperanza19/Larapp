@@ -20,21 +20,22 @@ WORKDIR /var/www/html
 
 # Instala las dependencias de Laravel
 RUN composer install --no-dev --optimize-autoloader
-# Limpia el cache de Laravel (muy importante para leer las nuevas variables de entorno)
+
+# 💥 NUEVO PASO: Ejecuta las migraciones de la base de datos
+RUN php artisan migrate --force
+
+# Limpia y optimiza la configuración de Laravel
 RUN php artisan config:clear
 RUN php artisan config:cache
 RUN php artisan route:cache
 RUN php artisan view:cache
 
-# Publica la configuración de Laravel
-RUN php artisan config:cache
-# Otorga permisos de escritura al directorio de almacenamiento
+# Otorga permisos de escritura a los directorios de almacenamiento y caché
 RUN chmod -R 775 storage
-# Otorga permisos de escritura al directorio de cache
 RUN chmod -R 775 bootstrap/cache
 
 # Expone el puerto 9000 para PHP-FPM
 EXPOSE 9000
 
-# Comando para iniciar la aplicación (se ejecutará al desplegar)
+# El comando de inicio del contenedor usa php-fpm
 CMD ["php-fpm"]
